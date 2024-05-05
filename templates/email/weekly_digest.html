@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weekly Digest</title>
+</head>
+<body>
+    <h1>Еженедельная рассылка</h1>
+    <p>Добрый день, {{ user.username }}!</p>
+    <p>Вот список последних постов за прошедшую неделю:</p>
+    <ul>
+    {% for post in posts %}
+        <li><a href="{{ site_url }}{{ post.get_absolute_url }}">{{ post.title }}</a></li>
+    {% endfor %}
+    </ul>
+    <p>С уважением,</p>
+    <p>Ваша команда сайта</p>
+</body>
+</html>

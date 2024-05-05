@@ -1,0 +1,23 @@
+<div class="flex items-center gap-4 [&>a:hover]:underline">
+    {% if post.likes.count %}
+    <div class="flex items-center gap-1">
+        {% if user in post.likes.all %}
+        <img class="w-5 -mt-1" src="https://img.icons8.com/small/16/ff0000/like--v1.png" />
+        {% else %}
+        <img class="w-5 -mt-1" src="https://img.icons8.com/small/16/like--v1.png">
+        {% endif %}
+        {{ post.likes.count }}
+    </div>
+    {% endif %}
+    {% if user.is_authenticated and request.user != post.author %}
+    <a hx-get="{% url 'like_post' post.pk %}"
+    hx-target="closest div"
+    hx-swap="outerHTML">
+        {% if user in post.likes.all %}
+        <b>Liked</b>
+        {% else %}
+        Like
+        {% endif %}
+    </a>
+    {% endif %}
+</div>

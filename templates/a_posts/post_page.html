@@ -1,0 +1,28 @@
+{% extends 'layouts/a.html' %}
+
+{% block content %}
+
+{% include 'a_posts/post.html' %}
+{% if user.is_authenticated %}
+<div class="card !pb-0 -mt-3">
+    <form class="flex items-center p-4" autocomplete="off" 
+    hx-post="{% url 'response_sent' post.pk %}"
+    hx-target="#tab-contents"
+    hx-swap="afterbegin"
+    _="on htmx:afterRequest reset() me"
+    >
+        {% csrf_token %}
+        {{ responseform.content }}
+        <button @click="open = false" class="block ml-2 bg-gray-200 text-gray-500 py-2 px-4 rounded hover:bg-gray-500 hover:text-gray-200" type="submit">Submit</button>
+
+    </form>
+</div>
+{% endif %}
+    <div id="tab-contents">
+        {% for response in post.responses.all %}
+        {% include 'a_posts/response.html' %}
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

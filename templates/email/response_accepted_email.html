@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accepted Response Email</title>
+</head>
+<body>
+    <h2>Ваш отклик принят</h2>
+    <p>Здравствуйте, {{ response.author.username }}!</p>
+    <p>Ваш отклик на пост "{{ response.parent_post.title }}" был принят.</p>
+    <p>Вы можете посмотреть ваш отклик по этой ссылке: <a href="{{ site_url }}{{ response.parent_post.get_absolute_url }}">Посмотреть отклик</a></p>
+    <p>Спасибо за ваше участие!</p>
+    <p>С уважением,<br>Администрация сайта</p>
+</body>
+</html>

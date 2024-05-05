@@ -1,0 +1,22 @@
+<aside x-show="mobileSidebarOpen" c-cloack class="md:!block col-span-full md:col-span-1 mx-[3%] order-1 md:order-2"
+    x-transition:enter="duration-300 ease-out" x-transition:enter-start="opacity-0 -mt-96"
+    x-transition:enter-end="opacity-100 mt-0">
+    <section class="card p-4">
+        <h2 class="font-bold mb-4">Categories</h2>
+        <ul
+            class="[&>li:hover]:bg-gray-100 [&>li:hover]:rounded-md [&>li:hover]:transition [&>li:hover]:duration-150 [&>li:hover]:font-bold">
+            {% for category_key, category_value in categories %}
+            <li class="{% if category_key == selected_category %}!bg-indigo-100 rounded-md {% endif %}"><a class="pb-2 block" href="{% url 'category' category_key %}">{{ category_value }}</a></a></li>
+            {% endfor %}
+        </ul>
+    </section>
+    <section class="card p-4">
+        <h2 class="font-bold mb-4">Top Authors</h2>
+        <ul
+            class="[&>li:hover]:bg-gray-100 [&>li:hover]:rounded-md [&>li:hover]:transition [&>li:hover]:duration-150 [&>li:hover]:font-bold">
+            {% for author in top_authors %}
+                <li><a class="pb-2 block" href="{% url 'author_posts' author.username %}">{{ author.username }}</a></li>
+            {% endfor %}
+        </ul>
+    </section>
+</aside>

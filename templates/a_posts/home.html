@@ -1,0 +1,14 @@
+{% extends 'layouts/a.html' %}
+
+{% block content %}
+{% if posts %}
+{% for post in posts %}
+
+{% include 'a_posts/post.html' %}
+
+{% endfor %}
+{% else %}
+    <p>No posts available.</p>
+{% endif %}
+
+{% endblock %}
